@@ -3,10 +3,11 @@ package picasso.parser.language;
 import java.io.File;
 
 import java.io.FileNotFoundException;
-import java.text.ParseException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
+
+import javax.swing.JOptionPane;
 
 /**
  * Handles reading the available built-in functions from a file.
@@ -38,11 +39,11 @@ public class BuiltinFunctionsReader {
 	private static void readFunctionsFromFile() {
 		functionsList = new ArrayList<String>();
 		Scanner reader;
-		// TODO: propogate to user
 		try {
 			reader = new Scanner(new File(FUNCTIONS_CONF_FILE));
 		} catch (FileNotFoundException e1) {
 			e1.printStackTrace();
+			JOptionPane.showMessageDialog(null,  "File not found", "Error", 0, null);
 			return;
 		}
 		while (reader.hasNextLine()) {
